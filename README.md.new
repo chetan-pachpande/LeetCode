@@ -1,0 +1,187 @@
+# NeetCode 150 Problems - LeetCode Workspace
+
+This workspace is organized by the NeetCode 150 problem categories for efficient LeetCode problem solving in C#, Java, and Python.
+
+## Categories
+
+1. **Arrays & Hashing** (`01_Arrays_Hashing/`)
+   - [TwoSum](01_Arrays_Hashing/TwoSum/)
+   - [ValidAnagram](01_Arrays_Hashing/ValidAnagram/)
+   - [GroupAnagrams](01_Arrays_Hashing/GroupAnagrams/)
+   - [ContainsDuplicate](01_Arrays_Hashing/ContainsDuplicate/)
+
+2. **Two Pointers** (`02_Two_Pointers/`)
+   - [ReverseString](02_Two_Pointers/Reversestring/)
+
+3. **Sliding Window** (`03_Sliding_Window/`)
+   - [BestTimeToBuyAndSellStock](03_Sliding_Window/BestTimeToBuyAndSellStock/)
+
+4. **Stack** (`04_Stack/`)
+
+5. **Binary Search** (`05_Binary_Search/`)
+
+6. **Linked List** (`06_Linked_List/`)
+
+7. **Trees** (`07_Trees/`)
+
+8. **Tries** (`08_Tries/`)
+
+9. **Heap / Priority Queue** (`09_Heap_Priority_Queue/`)
+
+10. **Backtracking** (`10_Backtracking/`)
+
+11. **Graphs** (`11_Graphs/`)
+
+12. **Advanced Graphs** (`12_Advanced_Graphs/`)
+
+13. **1D Dynamic Programming** (`13_1D_Dynamic_Programming/`)
+
+14. **2D Dynamic Programming** (`14_2D_Dynamic_Programming/`)
+
+15. **Greedy** (`15_Greedy/`)
+
+16. **Intervals** (`16_Intervals/`)
+
+17. **Math & Geometry** (`17_Math_Geometry/`)
+
+18. **Bit Manipulation** (`18_Bit_Manipulation/`)
+
+## Navigation
+
+To easily navigate between different problem categories:
+
+1. Open the workspace file in VS Code:
+   ```
+   File > Open Workspace from File > LeetCode/.vscode/neetcode_nav.code-workspace
+   ```
+
+2. This will display all problem categories as separate folders in your Explorer view, allowing you to quickly switch between them.
+
+## Prerequisites
+
+Before you can use this workspace, you need to install the following:
+
+### For Python
+- Python 3.x is required (the command `python3` should be available)
+
+### For Java
+- Install JDK (Java Development Kit)
+  ```bash
+  brew install --cask oracle-jdk  # or
+  brew install --cask adoptopenjdk
+  ```
+
+### For C#
+- Install .NET SDK 6.0 or later
+  ```bash
+  brew install --cask dotnet-sdk
+  # or download from: https://dotnet.microsoft.com/download/dotnet/6.0
+  ```
+
+## Folder Structure
+
+```
+LeetCode/
+  - 01_Arrays_Hashing/
+      - TwoSum/
+          - TwoSum.cs
+          - TwoSum.java
+          - two_sum.py
+      - ValidAnagram/
+          - ...
+  - 02_Two_Pointers/
+      - ...
+  - 03_Sliding_Window/
+      - ...
+```
+
+## How to Run Your Code
+
+### Using Code Runner Extension (Easiest Method)
+1. Open your code file (*.cs, *.java, or *.py)
+2. Right-click anywhere in the editor
+3. Select "Run Code" or use the shortcut `Ctrl+Alt+N` (Windows/Linux) or `Cmd+Alt+N` (Mac)
+4. You can also use the custom shortcut `Ctrl+Alt+R` which we've configured
+5. The output will appear in the integrated terminal
+
+### Using VS Code Debugger (Recommended)
+1. Open your code file (*.cs, *.java, or *.py)
+2. Press `F5` to start debugging
+3. Choose the appropriate debug configuration:
+   - "Debug C# Program" for C# files
+   - "Debug Java Program" for Java files
+   - "Debug Python Program" for Python files
+4. You can set breakpoints by clicking in the left margin of the editor
+5. Use the debug toolbar to step through code, inspect variables, etc.
+
+### Using VS Code Tasks
+1. Open your code file
+2. Press `Ctrl+Shift+B` (Windows/Linux) or `Cmd+Shift+B` (Mac) to build (for C# and Java)
+3. Use the Terminal > Run Task menu to select specific tasks
+4. Choose "run-all-solutions" task to run all language implementations of the current folder
+
+### Alternative Methods:
+
+#### For C# Files:
+From the terminal, navigate to the directory containing your .cs file and run:
+```bash
+dotnet run
+```
+
+#### For Java Files:
+From the terminal, navigate to the directory containing your .java file and run:
+```bash
+javac YourFile.java
+java YourFile
+```
+
+#### For Python Files:
+From the terminal, navigate to the directory containing your .py file and run:
+```bash
+python your_file.py
+```
+
+## Adding a New Problem
+
+### Using the Helper Script (Recommended)
+
+Use the provided script to create a new problem folder with template files, specifying both the problem name and its category number:
+
+```bash
+./create_problem.sh ProblemName CategoryNumber
+```
+
+For example:
+```bash
+./create_problem.sh ValidAnagram 1  # Creates ValidAnagram in Arrays & Hashing category
+```
+
+This will create:
+- A folder named `ProblemName` in the appropriate category directory
+- Template files: `ProblemName.cs`, `ProblemName.java`, `problem_name.py`
+- A C# project file for the problem
+
+### Manually
+
+1. Create a new folder for the problem:
+   ```bash
+   mkdir -p LeetCode/CategoryName/ProblemName
+   ```
+   
+2. Create your solution files in the appropriate languages:
+   - `ProblemName.cs` for C#
+   - `ProblemName.java` for Java  
+   - `problem_name.py` for Python
+   
+3. For C#, also create a project file:
+   ```bash
+   dotnet new console -o LeetCode/CategoryName/ProblemName
+   ```
+
+## Extensions Installed
+- Code Runner: Run code with a single click
+- C#: Language support for C#
+- Language Support for Java: Java language support
+- Python: Python language support
+- Debugger for Java: Debug Java code
+- Python Debugger: Debug Python code

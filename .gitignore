@@ -1,0 +1,102 @@
+# .gitignore file for LeetCode workspace with C#, Java, Python projects
+
+# C# / .NET Core ignores
+bin/
+obj/
+*.dll
+*.pdb
+*.exe
+*.suo
+*.user
+*.cache
+*.vs/
+*.vscode/
+*.idea/
+*.swp
+**/bin/
+**/obj/
+.vs/
+.vscode/
+
+# Java ignores
+*.class
+*.war
+*.ear
+*.jar
+*.log
+hs_err_pid*
+target/
+.classpath
+.project
+.settings/
+.gradle/
+build/
+
+# Python ignores
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.ipynb_checkpoints
+*.ipynb
+
+# MacOS specific ignores
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# IDE specific files
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.vs/
+.vscode/
+*.swp
+*.swo
+
+# Local configuration files
+*.config.user
+appsettings.Development.json
+
+# NuGet
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+
+# Project specific ignores
+# Add any specific files or directories to ignore for your projects here
