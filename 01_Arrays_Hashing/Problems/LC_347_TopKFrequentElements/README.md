@@ -28,46 +28,61 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
 
 ## Solutions
 
-### Solution 1: HashMap/Dictionary + Heap
-1. Count the frequency of each element using a HashMap/Dictionary.
-2. Use a heap (priority queue) to find the k most frequent elements.
+### Solution 1: HashMap + Max Heap
+1. Count the frequency of each element using a HashMap.
+2. Use a max heap (priority queue) to sort elements by frequency.
+3. Extract the top k elements.
 
-**Time Complexity:** 
-- O(n log k) when using a min-heap of size k
-- O(n log n) when using a max-heap with all elements
+**Time Complexity:** O(n log n) where n is the array's size
+- O(n) to count frequencies using HashMap
+- O(n log n) to add all elements to the heap
+- O(k log n) to extract top k elements from the heap
 
 **Space Complexity:** O(n) for the frequency map and the heap
 
-**Implementation Details:**
-- **Java**: Uses `PriorityQueue` with a custom comparator to create a max-heap.
-- **C#**: Uses LINQ's `OrderByDescending` and `Take` methods in the first solution variant.
-- **Python**: Uses `heapq.nlargest` with a key function to get the top k elements.
+**Advantages:**
+- Straightforward implementation
+- Good when k is close to n (the array size)
 
-### Solution 2: HashMap/Dictionary + Min Heap Optimization
-1. Count the frequency of each element using a HashMap/Dictionary.
+**Disadvantages:**
+- Not optimal when k is much smaller than n
+
+### Solution 2: HashMap + Min Heap Optimization
+1. Count the frequency of each element using a HashMap.
 2. Use a min-heap of size k to maintain the k most frequent elements.
 3. If the heap exceeds size k, remove the least frequent element.
 
 **Time Complexity:** O(n log k) for maintaining a heap of size k
+- O(n) to count frequencies
+- O(n log k) to maintain a heap of size k
+
 **Space Complexity:** O(n) for the frequency map + O(k) for the heap
 
-**Implementation Details:**
-- **Java**: Uses `PriorityQueue` with a min-heap of size k, polling the smallest element when the size exceeds k.
-- **C#**: Uses a manually maintained list to simulate a priority queue (min-heap).
-- **Python**: Uses `Counter` and `most_common` method which internally uses a heap-based approach.
+**Advantages:**
+- More efficient than Solution 1 when k is much smaller than n
+- Maintains only k elements in the heap at any time
+
+**Disadvantages:**
+- Still not as efficient as bucket sort for all cases
 
 ### Solution 3: Bucket Sort (Optimal Solution)
 1. Count the frequency of each element.
 2. Create buckets where each index represents a frequency and contains all numbers with that frequency.
-3. Iterate through the buckets from highest frequency to lowest, adding elements to the result until we have k elements.
+3. Iterate through the buckets from highest frequency to lowest, adding elements to the result.
 
 **Time Complexity:** O(n) - Linear time complexity
+- O(n) to count frequencies
+- O(n) to create and populate frequency buckets
+- O(n) to collect the top k elements
+
 **Space Complexity:** O(n) for the frequency map and buckets
 
-**Implementation Details:**
-- **Java**: Creates an array of ArrayList where the index is the frequency.
-- **C#**: Similar to Java implementation but uses List<int>[] for buckets.
-- **Python**: Uses a list of lists to represent buckets and flattens the result.
+**Advantages:**
+- Optimal linear time complexity
+- Works well for any value of k
+
+**Disadvantages:**
+- Requires more complex implementation than heap-based approaches
 
 ### Performance Comparison
 
@@ -96,15 +111,10 @@ This demonstrates why bucket sort is significantly faster for large arrays when 
 javac TopKFrequentElements.java
 java TopKFrequentElements
 ```
-
-### C#
+To run tests:
 ```bash
-dotnet run --project TopKFrequentElements.csproj
-```
-
-### Python
-```bash
-python3 top_k_frequent_elements.py
+javac -cp .:path/to/junit TopKFrequentElementsTest.java
+java -cp .:path/to/junit org.junit.runner.JUnitCore TopKFrequentElementsTest
 ```
 
 ## Related Problems
