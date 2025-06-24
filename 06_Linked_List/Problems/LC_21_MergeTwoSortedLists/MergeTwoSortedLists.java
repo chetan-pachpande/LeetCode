@@ -46,7 +46,10 @@ class ListNode {
     }
 }
 
-class Solution {
+/**
+ * Iterative solution for merging two sorted linked lists
+ */
+class IterativeSolution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if(list1 == null && list2 != null) return list2;
         if(list2 == null && list1 != null) return list1;
@@ -75,9 +78,37 @@ class Solution {
     }
 }
 
+/**
+ * Recursive solution for merging two sorted linked lists
+ * 
+ * Time Complexity: O(n + m) where n and m are the lengths of the two lists
+ * Space Complexity: O(n + m) due to the recursion stack
+ */
+class RecursiveSolution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        if (list1 == null) {
+            return list2;
+        }
+
+        if (list2 == null) {
+            return list1;
+        }
+        
+        if (list1.val <= list2.val) {
+            list1.next = mergeTwoLists(list1.next, list2);
+            return list1;
+        } else {
+            list2.next = mergeTwoLists(list1, list2.next);
+            return list2;
+        }
+    }
+}
+
 public class MergeTwoSortedLists {
     // Main method to test the implementation
     public static void main(String[] args) {
+        // Test iterative solution
+        System.out.println("TESTING ITERATIVE SOLUTION:");
         // Create two sorted linked lists
         ListNode list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
         ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
@@ -85,9 +116,23 @@ public class MergeTwoSortedLists {
         System.out.println("List 1: " + list1);
         System.out.println("List 2: " + list2);
         
-        Solution solution = new Solution();
-        ListNode merged = solution.mergeTwoLists(list1, list2);
+        IterativeSolution iterativeSolution = new IterativeSolution();
+        ListNode mergedIterative = iterativeSolution.mergeTwoLists(list1, list2);
         
-        System.out.println("Merged List: " + merged);
+        System.out.println("Merged List (Iterative): " + mergedIterative);
+        
+        // Test recursive solution
+        System.out.println("\nTESTING RECURSIVE SOLUTION:");
+        // Recreate the lists since the original ones are modified
+        list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
+        list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+        
+        System.out.println("List 1: " + list1);
+        System.out.println("List 2: " + list2);
+        
+        RecursiveSolution recursiveSolution = new RecursiveSolution();
+        ListNode mergedRecursive = recursiveSolution.mergeTwoLists(list1, list2);
+        
+        System.out.println("Merged List (Recursive): " + mergedRecursive);
     }
 }
