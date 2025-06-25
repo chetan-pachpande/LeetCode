@@ -48,7 +48,7 @@ class ListNode {
  * Time Complexity: O(n)
  * Space Complexity: O(n)
  */
-class Solution {
+class HashSetSolution {
     public boolean hasCycle(ListNode head) {
         HashSet<ListNode> seen = new HashSet<>();
         ListNode cur = head;
@@ -66,7 +66,7 @@ class Solution {
 }
 
 /**
- * Floyd's Cycle-Finding Algorithm (Tortoise and Hare)
+ * Floyd's Cycle-Finding Algorithm (Tortoise and Hare) - Alternative Implementation
  * Time Complexity: O(n)
  * Space Complexity: O(1) - constant space
  */
@@ -91,6 +91,27 @@ class OptimalSolution {
         }
         
         // If fast pointer reaches the end, there's no cycle
+        return false;
+    }
+}
+
+/**
+ * Floyd's Cycle-Finding Algorithm (Tortoise and Hare) - Main Solution
+ * Time Complexity: O(n)
+ * Space Complexity: O(1) - constant space
+ */
+class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+
+            if(fast == slow) return true;
+        }
+
         return false;
     }
 }
@@ -156,13 +177,15 @@ public class LinkedListCycle {
         int[] values1 = {3, 2, 0, -4};
         ListNode list1 = createCyclicList(values1, 1); // Cycle at position 1 (points to node with val=2)
         
-        Solution solution = new Solution();
+        HashSetSolution hashSetSolution = new HashSetSolution();
+        Solution solution = new Solution(); // This is your implementation
         OptimalSolution optimalSolution = new OptimalSolution();
         
         System.out.println("Test Case 1: List with cycle at position 1");
         printLinkedList(list1);
-        System.out.println("Has cycle (HashSet solution): " + solution.hasCycle(list1));
-        System.out.println("Has cycle (Floyd's algorithm): " + optimalSolution.hasCycle(list1));
+        System.out.println("Has cycle (HashSet solution): " + hashSetSolution.hasCycle(list1));
+        System.out.println("Has cycle (Floyd's algorithm - your version): " + solution.hasCycle(list1));
+        System.out.println("Has cycle (Floyd's algorithm - alternative): " + optimalSolution.hasCycle(list1));
         
         // Test Case 2: Non-cyclic List
         int[] values2 = {1, 2, 3, 4, 5};
@@ -170,22 +193,25 @@ public class LinkedListCycle {
         
         System.out.println("\nTest Case 2: List with no cycle");
         printLinkedList(list2);
-        System.out.println("Has cycle (HashSet solution): " + solution.hasCycle(list2));
-        System.out.println("Has cycle (Floyd's algorithm): " + optimalSolution.hasCycle(list2));
+        System.out.println("Has cycle (HashSet solution): " + hashSetSolution.hasCycle(list2));
+        System.out.println("Has cycle (Floyd's algorithm - your version): " + solution.hasCycle(list2));
+        System.out.println("Has cycle (Floyd's algorithm - alternative): " + optimalSolution.hasCycle(list2));
         
         // Test Case 3: Single node with cycle to itself
         ListNode list3 = new ListNode(1);
         list3.next = list3; // Self cycle
         
         System.out.println("\nTest Case 3: Single node with cycle to itself");
-        System.out.println("Has cycle (HashSet solution): " + solution.hasCycle(list3));
-        System.out.println("Has cycle (Floyd's algorithm): " + optimalSolution.hasCycle(list3));
+        System.out.println("Has cycle (HashSet solution): " + hashSetSolution.hasCycle(list3));
+        System.out.println("Has cycle (Floyd's algorithm - your version): " + solution.hasCycle(list3));
+        System.out.println("Has cycle (Floyd's algorithm - alternative): " + optimalSolution.hasCycle(list3));
         
         // Test Case 4: Empty list
         ListNode list4 = null;
         
         System.out.println("\nTest Case 4: Empty list");
-        System.out.println("Has cycle (HashSet solution): " + solution.hasCycle(list4));
-        System.out.println("Has cycle (Floyd's algorithm): " + optimalSolution.hasCycle(list4));
+        System.out.println("Has cycle (HashSet solution): " + hashSetSolution.hasCycle(list4));
+        System.out.println("Has cycle (Floyd's algorithm - your version): " + solution.hasCycle(list4));
+        System.out.println("Has cycle (Floyd's algorithm - alternative): " + optimalSolution.hasCycle(list4));
     }
 }
