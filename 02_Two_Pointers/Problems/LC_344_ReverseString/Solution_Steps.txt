@@ -1,0 +1,81 @@
+LC_344_ReverseString - Solution Steps
+
+Problem: Write a function that reverses a string. The input string is given as an array of characters s. You must do this by modifying the input array in-place with O(1) extra memory.
+
+=== APPROACH 1: Two Pointers (Optimal) ===
+
+Intuition: 
+Use two pointers from start and end, swap characters and move pointers toward center.
+
+Step 1: Initialize left pointer at index 0
+Step 2: Initialize right pointer at index length-1
+Step 3: While left < right:
+Step 4: Swap characters at s[left] and s[right]
+Step 5: Increment left pointer
+Step 6: Decrement right pointer
+Step 7: Continue until pointers meet or cross
+
+Time Complexity: O(n) - single pass through half the array
+Space Complexity: O(1) - only using two pointers, in-place modification
+
+=== APPROACH 2: Recursion ===
+
+Intuition:
+Use recursive approach to swap characters from outside to inside.
+
+Step 1: Create recursive helper function with start and end indices
+Step 2: Base case: if start >= end, return
+Step 3: Swap characters at start and end positions
+Step 4: Recursively call function with start+1 and end-1
+Step 5: Continue until base case reached
+
+Time Complexity: O(n) - n/2 recursive calls
+Space Complexity: O(n) - recursion stack space
+
+=== APPROACH 3: Using Stack ===
+
+Intuition:
+Push all characters to stack, then pop them back to array (LIFO gives reverse order).
+
+Step 1: Create a stack
+Step 2: Push all characters from array to stack
+Step 3: Pop characters from stack back to array
+Step 4: Stack's LIFO property gives reversed order
+
+Time Complexity: O(n) - two passes through array
+Space Complexity: O(n) - stack storage
+
+Note: This violates the O(1) space constraint
+
+=== APPROACH 4: Built-in Reverse ===
+
+Intuition:
+Use language built-in reverse functions.
+
+Step 1: Convert char array to string
+Step 2: Use built-in reverse function
+Step 3: Convert back to char array
+
+Time Complexity: O(n)
+Space Complexity: O(n) - additional string storage
+
+Note: This also violates the O(1) space constraint and may not be allowed in interviews
+
+=== APPROACH 5: XOR Swap (Advanced) ===
+
+Intuition:
+Use XOR operations to swap characters without temporary variable.
+
+Step 1: Use two pointers approach
+Step 2: For swapping, use XOR operations:
+Step 3: s[left] = s[left] ^ s[right]
+Step 4: s[right] = s[left] ^ s[right]  
+Step 5: s[left] = s[left] ^ s[right]
+Step 6: Move pointers toward center
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Note: XOR swap works for integers but not directly for characters in all languages
+
+Interview Tip: Two pointers approach is the standard solution. It's simple, efficient, and meets all constraints. Mention that this pattern applies to many "reverse" problems.

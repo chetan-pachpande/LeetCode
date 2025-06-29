@@ -1,0 +1,75 @@
+LC_121_BestTimeToBuyAndSellStock - Solution Steps
+
+Problem: You are given an array prices where prices[i] is the price of a given stock on the ith day. You want to maximize your profit by choosing a single day to buy and a different day in the future to sell.
+
+=== APPROACH 1: Sliding Window / Two Pointers (Optimal) ===
+
+Intuition: 
+Track minimum price seen so far and maximum profit possible. For each day, calculate profit if we sell today.
+
+Step 1: Initialize minPrice to first price and maxProfit to 0
+Step 2: Iterate through prices starting from day 1
+Step 3: For each price, update minPrice if current price is lower
+Step 4: Calculate profit if we sell today: currentPrice - minPrice
+Step 5: Update maxProfit if current profit is higher
+Step 6: Return maxProfit
+
+Time Complexity: O(n) - single pass through array
+Space Complexity: O(1) - only using two variables
+
+=== APPROACH 2: Brute Force ===
+
+Intuition:
+Try all possible combinations of buy and sell days.
+
+Step 1: Initialize maxProfit to 0
+Step 2: For each day i (buy day):
+Step 3: For each day j > i (sell day):
+Step 4: Calculate profit = prices[j] - prices[i]
+Step 5: Update maxProfit if profit is higher
+Step 6: Return maxProfit
+
+Time Complexity: O(n²) - nested loops
+Space Complexity: O(1) - no extra space
+
+=== APPROACH 3: Kadane's Algorithm Variant ===
+
+Intuition:
+Transform problem to maximum subarray: calculate daily price differences and find maximum sum subarray.
+
+Step 1: Create array of price differences (prices[i] - prices[i-1])
+Step 2: Apply Kadane's algorithm to find maximum subarray sum
+Step 3: This sum represents maximum profit
+
+Time Complexity: O(n)
+Space Complexity: O(n) - storing differences array
+
+=== APPROACH 4: Dynamic Programming ===
+
+Intuition:
+Track two states: holding stock or not holding stock.
+
+Step 1: Initialize hold = -prices[0] (bought on day 0)
+Step 2: Initialize sold = 0 (no transaction on day 0)
+Step 3: For each day from 1 to n-1:
+Step 4: Update hold = max(hold, -prices[i]) (buy at lower price if possible)
+Step 5: Update sold = max(sold, hold + prices[i]) (sell for profit if possible)
+Step 6: Return sold
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+=== APPROACH 5: Peak and Valley ===
+
+Intuition:
+Find local minima (valleys) to buy and local maxima (peaks) to sell.
+
+Step 1: Find all valleys (local minima)
+Step 2: Find all peaks (local maxima)  
+Step 3: For each valley, find the highest peak that comes after it
+Step 4: Calculate maximum profit from all valley-peak pairs
+
+Time Complexity: O(n²) in worst case
+Space Complexity: O(n) - storing valleys and peaks
+
+Interview Tip: The sliding window approach is optimal and most intuitive. Frame it as "keep track of minimum price so far and maximum profit so far." This pattern applies to many stock problems.

@@ -1,0 +1,76 @@
+LC_230_KthSmallestElementInBST - Solution Steps
+
+Problem: Given the root of a binary search tree and an integer k, return the kth smallest value (1-indexed) among all values in the tree.
+
+=== APPROACH 1: In-order Traversal (Recursive) ===
+
+Intuition: 
+In-order traversal of BST gives elements in sorted order. The kth element in this order is our answer.
+
+Step 1: Perform in-order traversal (left → root → right)
+Step 2: Store all elements in a list during traversal
+Step 3: Return the element at index k-1 (since k is 1-indexed)
+
+Time Complexity: O(n) - visit all nodes
+Space Complexity: O(n) - recursion stack + list storage
+
+=== APPROACH 2: Optimized Recursive with Early Termination ===
+
+Intuition:
+Use in-order traversal but stop as soon as we find the kth element, avoiding unnecessary traversal.
+
+Step 1: Create helper class to track state (counter and result)
+Step 2: Perform in-order traversal
+Step 3: For each node visited, decrement counter
+Step 4: When counter reaches 0, store result and terminate
+Step 5: Use early return to avoid further traversal
+
+Time Complexity: O(H + k) where H is height - best case when k is small
+Space Complexity: O(H) - recursion stack only
+
+=== APPROACH 3: Iterative In-order Traversal ===
+
+Intuition:
+Use stack to simulate recursive in-order traversal, with early termination when kth element found.
+
+Step 1: Create stack and initialize current node to root
+Step 2: While stack is not empty or current is not null:
+Step 3: Push all left children to stack
+Step 4: Pop from stack (this is next in in-order)
+Step 5: Decrement k, if k becomes 0, return current node's value
+Step 6: Move to right child and repeat
+
+Time Complexity: O(H + k) - optimal for small k
+Space Complexity: O(H) - stack storage
+
+=== APPROACH 4: Morris Traversal (Advanced) ===
+
+Intuition:
+Perform in-order traversal without recursion or stack by modifying tree links temporarily.
+
+Step 1: Initialize current = root
+Step 2: While current is not null:
+Step 3: If current has no left child, process current and move right
+Step 4: If current has left child, find predecessor
+Step 5: Create temporary link from predecessor to current
+Step 6: Continue traversal using temporary links
+Step 7: Count elements and return kth element
+
+Time Complexity: O(n) - each edge traversed at most twice
+Space Complexity: O(1) - no recursion or stack
+
+=== APPROACH 5: Follow-up: Frequent Queries ===
+
+Intuition:
+If we need to answer many kth smallest queries, augment BST nodes with subtree sizes.
+
+Step 1: Modify BST to store count of nodes in left subtree
+Step 2: For kth smallest query:
+Step 3: If k <= leftSubtreeSize, search in left subtree
+Step 4: If k == leftSubtreeSize + 1, current node is answer
+Step 5: If k > leftSubtreeSize + 1, search in right subtree with k - leftSubtreeSize - 1
+
+Time Complexity: O(H) per query after O(n) preprocessing
+Space Complexity: O(1) per query
+
+Interview Tip: Start with basic in-order traversal, then optimize to early termination version. The optimized recursive approach (Approach 2) is most commonly expected. Mention Morris traversal for bonus points.

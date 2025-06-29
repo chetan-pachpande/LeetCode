@@ -1,0 +1,65 @@
+LC_049_GroupAnagrams - Solution Steps
+
+Problem: Given an array of strings, group the anagrams together. You can return the answer in any order.
+
+=== APPROACH 1: Sorting Characters (Most Common) ===
+
+Intuition: 
+Anagrams will have the same characters when sorted. Use sorted string as a key in HashMap to group anagrams together.
+
+Step 1: Create a HashMap where key is sorted string, value is list of anagrams
+Step 2: Iterate through each string in the input array
+Step 3: For each string, convert to character array and sort it
+Step 4: Use the sorted character array as a string key
+Step 5: Add the original string to the list associated with this key
+Step 6: If key doesn't exist, create new list and add string
+Step 7: Return all values from HashMap as the result
+
+Time Complexity: O(n * k log k) - n strings, k max length, sorting each string
+Space Complexity: O(n * k) - storing all strings in result
+
+=== APPROACH 2: Character Count Array (Optimal) ===
+
+Intuition:
+Instead of sorting, use character frequency count as the key. Anagrams have identical character frequencies.
+
+Step 1: Create HashMap where key is character count signature, value is list of strings
+Step 2: For each string, create character count array of size 26
+Step 3: Count frequency of each character in the string
+Step 4: Convert count array to string to use as HashMap key
+Step 5: Add original string to list associated with this count signature
+Step 6: Return all values from HashMap
+
+Time Complexity: O(n * k) - linear in string length and number of strings
+Space Complexity: O(n * k) - storing all strings
+
+=== APPROACH 3: Prime Number Product ===
+
+Intuition:
+Assign each letter a unique prime number. Anagrams will have the same product of primes.
+
+Step 1: Create array mapping each letter to a unique prime number
+Step 2: For each string, calculate product of prime numbers for all characters
+Step 3: Use this product as HashMap key
+Step 4: Group strings with same product together
+Step 5: Return grouped results
+
+Time Complexity: O(n * k)
+Space Complexity: O(n * k)
+
+Note: Risk of integer overflow for long strings, less commonly used.
+
+=== APPROACH 4: Frequency Map as Key ===
+
+Intuition:
+Create a frequency map for each string and use map's string representation as key.
+
+Step 1: For each string, create character frequency map
+Step 2: Convert frequency map to consistent string representation
+Step 3: Use this string as HashMap key to group anagrams
+Step 4: Return grouped results
+
+Time Complexity: O(n * k)
+Space Complexity: O(n * k)
+
+Interview Tip: Start with sorting approach (easier to implement), then optimize to character count approach. Mention that character count is optimal for this problem.

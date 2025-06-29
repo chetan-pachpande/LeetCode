@@ -1,0 +1,35 @@
+LC_001_TwoSum - Solution Steps
+
+Problem: Given an array of integers and a target sum, return indices of two numbers that add up to the target.
+
+=== APPROACH 1: HashMap (Optimal) ===
+
+Intuition: 
+Instead of checking every pair (which would be O(n²)), we can use a HashMap to store numbers we've seen and check if the complement (target - current_number) exists in constant time.
+
+Step 1: Create a HashMap to store value → index mapping
+Step 2: Iterate through the array
+Step 3: For each element, calculate complement = target - current_element
+Step 4: Check if complement exists in HashMap
+Step 5: If complement exists, return [complement_index, current_index]
+Step 6: If complement doesn't exist, store current element and its index in HashMap
+Step 7: Continue until solution is found
+
+Time Complexity: O(n) - single pass through array
+Space Complexity: O(n) - HashMap storage
+
+Key Insight: By storing elements as we go, we can find pairs in a single pass while maintaining O(1) lookup time.
+
+=== APPROACH 2: Brute Force (For comparison) ===
+
+Intuition:
+Check every possible pair of numbers to see if they sum to target.
+
+Step 1: Use nested loops to check all pairs
+Step 2: For each pair (i, j) where i < j, check if nums[i] + nums[j] == target
+Step 3: Return [i, j] when found
+
+Time Complexity: O(n²) - nested loops
+Space Complexity: O(1) - no extra space
+
+Interview Tip: Always mention the brute force solution first, then optimize to the HashMap approach.

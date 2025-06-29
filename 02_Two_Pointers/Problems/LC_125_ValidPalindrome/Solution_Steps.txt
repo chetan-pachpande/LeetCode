@@ -1,0 +1,80 @@
+LC_125_ValidPalindrome - Solution Steps
+
+Problem: A phrase is a palindrome if after converting to lowercase and removing non-alphanumeric characters, it reads the same forward and backward.
+
+=== APPROACH 1: Two Pointers (Optimal) ===
+
+Intuition: 
+Use two pointers from start and end, skip non-alphanumeric characters, and compare characters.
+
+Step 1: Initialize left pointer at start (0) and right pointer at end (length-1)
+Step 2: While left < right:
+Step 3: Skip non-alphanumeric characters from left side (increment left)
+Step 4: Skip non-alphanumeric characters from right side (decrement right)
+Step 5: If both pointers point to valid characters, compare them (case-insensitive)
+Step 6: If characters don't match, return false
+Step 7: If characters match, move both pointers (left++, right--)
+Step 8: If loop completes without mismatch, return true
+
+Time Complexity: O(n) - single pass through string
+Space Complexity: O(1) - only using two pointers
+
+=== APPROACH 2: Clean String First ===
+
+Intuition:
+First clean the string by removing non-alphanumeric characters and converting to lowercase, then check palindrome.
+
+Step 1: Create StringBuilder to build cleaned string
+Step 2: Iterate through original string
+Step 3: For each character, if alphanumeric, add lowercase version to StringBuilder
+Step 4: Convert StringBuilder to string
+Step 5: Use two pointers on cleaned string to check palindrome
+Step 6: Compare characters from start and end moving inward
+Step 7: Return false if any mismatch, true if all match
+
+Time Complexity: O(n) - two passes through string
+Space Complexity: O(n) - storing cleaned string
+
+=== APPROACH 3: Reverse and Compare ===
+
+Intuition:
+Clean the string, reverse it, and compare with original cleaned string.
+
+Step 1: Clean string by keeping only alphanumeric characters in lowercase
+Step 2: Create reversed version of cleaned string
+Step 3: Compare cleaned string with its reverse
+Step 4: Return true if they are equal, false otherwise
+
+Time Complexity: O(n) - multiple passes through string
+Space Complexity: O(n) - storing cleaned and reversed strings
+
+=== APPROACH 4: Recursion ===
+
+Intuition:
+Use recursive approach with two pointers to check palindrome.
+
+Step 1: Create recursive helper function with left and right pointers
+Step 2: Base case: if left >= right, return true
+Step 3: Skip non-alphanumeric characters on both sides
+Step 4: If characters at current positions don't match, return false
+Step 5: Recursively call function with inner pointers
+Step 6: Return result of recursive call
+
+Time Complexity: O(n)
+Space Complexity: O(n) - recursion stack
+
+=== APPROACH 5: Using Java Stream API ===
+
+Intuition:
+Use Stream API to filter and process characters, then check palindrome.
+
+Step 1: Convert string to stream of characters
+Step 2: Filter only alphanumeric characters
+Step 3: Convert to lowercase
+Step 4: Collect to string
+Step 5: Compare with reverse of the cleaned string
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Interview Tip: Two pointers approach is optimal as it requires O(1) space. Mention the importance of handling edge cases like empty strings and single characters.

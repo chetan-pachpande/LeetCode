@@ -1,0 +1,75 @@
+LC_036_ValidSudoku - Solution Steps
+
+Problem: Determine if a 9x9 Sudoku board is valid according to standard Sudoku rules.
+
+=== APPROACH 1: HashSet for Each Constraint (Optimal) ===
+
+Intuition: 
+Use separate HashSets to track seen numbers in each row, column, and 3x3 sub-box.
+
+Step 1: Create HashSets for each row (9 sets), each column (9 sets), and each 3x3 box (9 sets)
+Step 2: Iterate through each cell (i, j) in the 9x9 board
+Step 3: If cell is empty ('.'), skip to next cell
+Step 4: If cell contains a digit, check three constraints:
+Step 5: Check if digit already exists in row i's HashSet
+Step 6: Check if digit already exists in column j's HashSet
+Step 7: Check if digit already exists in 3x3 box's HashSet (box index = (i/3)*3 + j/3)
+Step 8: If any constraint is violated, return false
+Step 9: If no violation, add digit to all three relevant HashSets
+Step 10: If all cells are processed without violation, return true
+
+Time Complexity: O(1) - fixed 9x9 board, constant time
+Space Complexity: O(1) - fixed number of HashSets
+
+=== APPROACH 2: Single Pass with String Encoding ===
+
+Intuition:
+Use a single HashSet with encoded strings to represent row, column, and box constraints.
+
+Step 1: Create one HashSet to store constraint strings
+Step 2: Iterate through each cell (i, j) in the board
+Step 3: If cell contains digit, create three constraint strings:
+Step 4: Row constraint: "row" + i + "value" + digit
+Step 5: Column constraint: "col" + j + "value" + digit  
+Step 6: Box constraint: "box" + (i/3)*3+(j/3) + "value" + digit
+Step 7: Check if any of these strings already exist in HashSet
+Step 8: If any exists, return false (constraint violated)
+Step 9: Add all three strings to HashSet
+Step 10: Return true if no violations found
+
+Time Complexity: O(1) - constant 9x9 board
+Space Complexity: O(1) - fixed size constraints
+
+=== APPROACH 3: Three Separate Validation Functions ===
+
+Intuition:
+Create separate functions to validate rows, columns, and boxes independently.
+
+Step 1: Create function to validate all rows
+Step 2: For each row, use HashSet to check for duplicates
+Step 3: Create function to validate all columns
+Step 4: For each column, use HashSet to check for duplicates
+Step 5: Create function to validate all 3x3 boxes
+Step 6: For each box, use HashSet to check for duplicates
+Step 7: Return true only if all three validations pass
+
+Time Complexity: O(1) - three passes through fixed board
+Space Complexity: O(1) - temporary HashSets
+
+=== APPROACH 4: Boolean Array Approach ===
+
+Intuition:
+Use boolean arrays instead of HashSets to track seen digits (since digits are 1-9).
+
+Step 1: Create boolean arrays for rows[9][10], cols[9][10], boxes[9][10]
+Step 2: Iterate through board
+Step 3: For each digit, convert char to int
+Step 4: Check if rows[i][digit], cols[j][digit], or boxes[boxIndex][digit] is true
+Step 5: If any is true, return false
+Step 6: Set all three boolean flags to true
+Step 7: Return true if no conflicts
+
+Time Complexity: O(1)
+Space Complexity: O(1) - fixed size boolean arrays
+
+Interview Tip: HashSet approach with single pass is most intuitive. Mention that the problem size is constant (9x9), so all approaches are O(1).

@@ -1,0 +1,64 @@
+LC_167_TwoSumII - Solution Steps
+
+Problem: Given a 1-indexed array of integers that is already sorted in non-decreasing order, find two numbers that add up to a specific target.
+
+=== APPROACH 1: Two Pointers (Optimal) ===
+
+Intuition: 
+Since array is sorted, use two pointers from start and end. If sum is too small, move left pointer right. If sum is too large, move right pointer left.
+
+Step 1: Initialize left pointer at index 0, right pointer at index length-1
+Step 2: While left < right:
+Step 3: Calculate sum = numbers[left] + numbers[right]
+Step 4: If sum equals target, return [left+1, right+1] (1-indexed)
+Step 5: If sum < target, increment left pointer (need larger sum)
+Step 6: If sum > target, decrement right pointer (need smaller sum)
+Step 7: Continue until target sum is found
+
+Time Complexity: O(n) - single pass through array
+Space Complexity: O(1) - only using two pointers
+
+=== APPROACH 2: Binary Search ===
+
+Intuition:
+For each element, use binary search to find its complement in the remaining array.
+
+Step 1: For each index i from 0 to n-2:
+Step 2: Calculate complement = target - numbers[i]
+Step 3: Use binary search in subarray from i+1 to n-1 to find complement
+Step 4: If complement found, return [i+1, found_index+1]
+Step 5: Continue until solution found
+
+Time Complexity: O(n log n) - n iterations, each with O(log n) binary search
+Space Complexity: O(1) - no extra space
+
+=== APPROACH 3: HashMap ===
+
+Intuition:
+Similar to Two Sum I, use HashMap to store values and their indices.
+
+Step 1: Create HashMap to store value → index mapping
+Step 2: Iterate through array with index i:
+Step 3: Calculate complement = target - numbers[i]
+Step 4: If complement exists in HashMap, return [map.get(complement)+1, i+1]
+Step 5: Store current number and its index in HashMap
+Step 6: Continue until solution found
+
+Time Complexity: O(n) - single pass through array
+Space Complexity: O(n) - HashMap storage
+
+=== APPROACH 4: Brute Force ===
+
+Intuition:
+Check all possible pairs to find the target sum.
+
+Step 1: Use nested loops to check all pairs
+Step 2: For each i from 0 to n-2:
+Step 3: For each j from i+1 to n-1:
+Step 4: If numbers[i] + numbers[j] == target, return [i+1, j+1]
+Step 5: Continue until solution found
+
+Time Complexity: O(n²) - nested loops
+Space Complexity: O(1) - no extra space
+
+Interview Tip: Two pointers is optimal for sorted arrays. Mention that the sorted property allows us to make intelligent decisions about pointer movement. Always start with this approach for sorted array problems.

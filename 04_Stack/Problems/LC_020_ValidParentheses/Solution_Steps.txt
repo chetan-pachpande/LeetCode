@@ -1,0 +1,82 @@
+LC_020_ValidParentheses - Solution Steps
+
+Problem: Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+=== APPROACH 1: Stack (Optimal) ===
+
+Intuition: 
+Use stack to match opening brackets with their corresponding closing brackets. Last opened bracket should be first closed (LIFO).
+
+Step 1: Create empty stack
+Step 2: Iterate through each character in string
+Step 3: If character is opening bracket '(', '[', '{', push to stack
+Step 4: If character is closing bracket ')', ']', '}':
+Step 5: Check if stack is empty (no matching opening bracket) - return false
+Step 6: Pop from stack and check if it matches current closing bracket
+Step 7: If brackets don't match, return false
+Step 8: After processing all characters, check if stack is empty
+Step 9: Return true if stack is empty (all brackets matched), false otherwise
+
+Time Complexity: O(n) - single pass through string
+Space Complexity: O(n) - stack can store up to n/2 opening brackets
+
+=== APPROACH 2: Counter Method (Limited) ===
+
+Intuition:
+Count opening and closing brackets, but this only works for single type of brackets.
+
+Step 1: Initialize counter to 0
+Step 2: For each character:
+Step 3: If opening bracket, increment counter
+Step 4: If closing bracket, decrement counter
+Step 5: If counter becomes negative, return false
+Step 6: Return true if counter is 0
+
+Note: This approach doesn't work for multiple bracket types like "([)]"
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+=== APPROACH 3: Replace Method ===
+
+Intuition:
+Repeatedly remove valid bracket pairs until no more can be removed.
+
+Step 1: While string contains "()" or "[]" or "{}":
+Step 2: Remove one occurrence of any valid pair
+Step 3: If string becomes empty, return true
+Step 4: If no more pairs can be removed and string not empty, return false
+
+Time Complexity: O(n²) - potentially n iterations, each taking O(n)
+Space Complexity: O(n) - string operations
+
+=== APPROACH 4: Recursive Approach ===
+
+Intuition:
+Use recursion to match brackets from outside to inside.
+
+Step 1: Base case: empty string returns true
+Step 2: Find first closing bracket
+Step 3: Find its matching opening bracket before it
+Step 4: Recursively check substring before opening and after closing bracket
+Step 5: Return true only if both parts are valid
+
+Time Complexity: O(n²) - recursion with string operations
+Space Complexity: O(n) - recursion stack
+
+=== APPROACH 5: HashMap for Bracket Mapping ===
+
+Intuition:
+Use HashMap to store bracket mappings and stack for matching.
+
+Step 1: Create HashMap mapping closing brackets to opening brackets
+Step 2: Use stack to store opening brackets
+Step 3: For each character:
+Step 4: If opening bracket, push to stack
+Step 5: If closing bracket, check stack top matches using HashMap
+Step 6: Return true if stack is empty at end
+
+Time Complexity: O(n)
+Space Complexity: O(n) - HashMap and stack
+
+Interview Tip: Stack approach is the standard solution. Emphasize the LIFO property - last opened bracket must be first closed. This pattern applies to many parsing problems.

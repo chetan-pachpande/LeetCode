@@ -1,0 +1,68 @@
+LC_853_CarFleet - Solution Steps
+
+Problem: There are n cars going to the same destination along a one-lane road. Given arrays position and speed, return the number of car fleets that will arrive at the destination.
+
+=== APPROACH 1: Sort by Position + Stack (Common) ===
+
+Intuition: 
+Cars closer to destination determine fleet formation. Sort by position and use stack to track fleets.
+
+Step 1: Create array of cars with position and speed
+Step 2: Sort cars by position in descending order (closest to target first)
+Step 3: For each car, calculate time to reach destination: (target - position) / speed
+Step 4: Use stack to track fleets
+Step 5: If current car takes longer than car ahead, it forms new fleet
+Step 6: Otherwise, it joins the fleet of the car ahead
+Step 7: Return size of stack (number of fleets)
+
+Time Complexity: O(n log n) - sorting dominates
+Space Complexity: O(n) - storing cars and stack
+
+=== APPROACH 2: Sort by Position + Single Pass (Optimal) ===
+
+Intuition:
+Process cars from closest to target. A car forms new fleet if it takes longer to reach destination than the car ahead.
+
+Step 1: Pair each position with its speed and sort by position (descending)
+Step 2: Initialize fleet count and track time of slowest car in current fleet
+Step 3: For each car from closest to farthest:
+Step 4: Calculate time to reach destination
+Step 5: If time > current fleet's time, this car starts new fleet
+Step 6: Update fleet count and current fleet time
+Step 7: Return total fleet count
+
+Time Complexity: O(n log n) - sorting
+Space Complexity: O(n) - storing sorted pairs
+
+=== APPROACH 3: Monotonic Stack ===
+
+Intuition:
+Use stack to maintain decreasing order of arrival times.
+
+Step 1: Sort cars by position (descending)
+Step 2: Use stack to store arrival times
+Step 3: For each car, calculate arrival time
+Step 4: While stack top <= current arrival time, pop from stack
+Step 5: Push current arrival time to stack
+Step 6: Stack size represents number of fleets
+
+Time Complexity: O(n log n)
+Space Complexity: O(n)
+
+=== APPROACH 4: Greedy Approach ===
+
+Intuition:
+Process cars from position closest to target. Each car either joins existing fleet or creates new one.
+
+Step 1: Sort by position (closest to target first)
+Step 2: Track arrival time of current fleet leader
+Step 3: For each car:
+Step 4: Calculate its arrival time
+Step 5: If arrival time > fleet leader time, start new fleet
+Step 6: Update fleet leader time to slower car
+Step 7: Count total fleets
+
+Time Complexity: O(n log n)
+Space Complexity: O(1) - excluding sorting space
+
+Interview Tip: The key insight is that cars closer to destination control fleet formation. Always sort by position first. The single-pass approach after sorting is most efficient.

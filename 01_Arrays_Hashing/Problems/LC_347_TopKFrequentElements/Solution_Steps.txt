@@ -1,0 +1,65 @@
+LC_347_TopKFrequentElements - Solution Steps
+
+Problem: Given an integer array nums and an integer k, return the k most frequent elements.
+
+=== APPROACH 1: HashMap + Max Heap ===
+
+Intuition: 
+Count frequency of each element, then use a max heap to get the k most frequent elements.
+
+Step 1: Create HashMap to count frequency of each element
+Step 2: Iterate through array and populate frequency map
+Step 3: Create max heap (priority queue) based on frequency values
+Step 4: Add all unique elements to the heap
+Step 5: Extract k elements from the top of heap
+Step 6: Return these k elements as result
+
+Time Complexity: O(n log n) - adding n elements to heap
+Space Complexity: O(n) - HashMap and heap storage
+
+=== APPROACH 2: HashMap + Min Heap (Optimal for small k) ===
+
+Intuition:
+Use min heap of size k to maintain only the k most frequent elements, avoiding full sorting.
+
+Step 1: Create HashMap to count frequency of each element
+Step 2: Create min heap of size k
+Step 3: For each unique element in frequency map:
+Step 4: If heap size < k, add element to heap
+Step 5: If heap size = k and current frequency > min frequency in heap:
+Step 6: Remove min element from heap and add current element
+Step 7: Extract all elements from heap as result
+
+Time Complexity: O(n log k) - better when k is small
+Space Complexity: O(n + k) - HashMap plus heap of size k
+
+=== APPROACH 3: Bucket Sort (Optimal Overall) ===
+
+Intuition:
+Since frequency is bounded by array length, use bucket sort where index represents frequency.
+
+Step 1: Create HashMap to count frequency of each element
+Step 2: Create array of lists where index i represents frequency i
+Step 3: For each element in frequency map, add to bucket[frequency]
+Step 4: Iterate through buckets from highest frequency to lowest
+Step 5: Collect elements until we have k elements
+Step 6: Return the k elements
+
+Time Complexity: O(n) - linear time complexity
+Space Complexity: O(n) - buckets array and frequency map
+
+=== APPROACH 4: Quick Select (Advanced) ===
+
+Intuition:
+Use quick select algorithm to find the kth most frequent element, then collect all elements with frequency >= kth frequency.
+
+Step 1: Count frequencies using HashMap
+Step 2: Create array of unique elements
+Step 3: Use quick select to partition around kth most frequent element
+Step 4: Collect k most frequent elements
+Step 5: Return result
+
+Time Complexity: O(n) average case, O(n²) worst case
+Space Complexity: O(n)
+
+Interview Tip: Start with heap approaches (easier to implement), then optimize to bucket sort for O(n) solution. Bucket sort is optimal due to bounded frequency range.

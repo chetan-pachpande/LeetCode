@@ -1,0 +1,66 @@
+LC_242_ValidAnagram - Solution Steps
+
+Problem: Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+=== APPROACH 1: Character Count Array (Optimal) ===
+
+Intuition: 
+If two strings are anagrams, they must have the same character frequencies. Use an array to count characters and increment for string s, decrement for string t.
+
+Step 1: Check if lengths are different, return false if so
+Step 2: Create an integer array of size 26 (for lowercase letters a-z)
+Step 3: Iterate through both strings simultaneously
+Step 4: For each character in string s, increment count[char - 'a']
+Step 5: For each character in string t, decrement count[char - 'a']
+Step 6: After processing, check if all counts are zero
+Step 7: If all counts are zero, strings are anagrams (return true)
+Step 8: If any count is non-zero, not anagrams (return false)
+
+Time Complexity: O(n) - single pass through strings
+Space Complexity: O(1) - fixed size array of 26 elements
+
+=== APPROACH 2: Sorting ===
+
+Intuition:
+If two strings are anagrams, they will be identical when sorted.
+
+Step 1: Check if lengths are different, return false if so
+Step 2: Convert both strings to character arrays
+Step 3: Sort both character arrays
+Step 4: Compare sorted arrays for equality
+Step 5: Return true if equal, false otherwise
+
+Time Complexity: O(n log n) - due to sorting
+Space Complexity: O(n) - for character arrays
+
+=== APPROACH 3: HashMap ===
+
+Intuition:
+Count character frequencies for both strings using HashMap and compare the frequency maps.
+
+Step 1: Check if lengths are different, return false if so
+Step 2: Create two HashMaps to count characters in each string
+Step 3: Iterate through first string, count character frequencies
+Step 4: Iterate through second string, count character frequencies
+Step 5: Compare the two HashMaps for equality
+Step 6: Return true if maps are equal, false otherwise
+
+Time Complexity: O(n) - linear pass through strings
+Space Complexity: O(k) - where k is number of unique characters
+
+=== APPROACH 4: Single HashMap (Alternative) ===
+
+Intuition:
+Use one HashMap, increment for string s characters, decrement for string t characters.
+
+Step 1: Check if lengths are different, return false if so
+Step 2: Create one HashMap
+Step 3: Iterate through string s, increment character counts
+Step 4: Iterate through string t, decrement character counts
+Step 5: Check if all values in HashMap are zero
+Step 6: Return true if all zero, false otherwise
+
+Time Complexity: O(n)
+Space Complexity: O(k)
+
+Interview Tip: Character count array is optimal for lowercase letters. Mention HashMap approach for Unicode characters.

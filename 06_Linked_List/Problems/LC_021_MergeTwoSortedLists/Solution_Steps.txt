@@ -1,0 +1,86 @@
+LC_021_MergeTwoSortedLists - Solution Steps
+
+Problem: You are given the heads of two sorted linked lists list1 and list2. Merge the two lists in a sorted order and return the head of the merged linked list.
+
+=== APPROACH 1: Iterative with Dummy Node (Optimal) ===
+
+Intuition: 
+Use dummy node to simplify edge cases. Compare nodes from both lists and attach smaller one to result.
+
+Step 1: Create dummy node to avoid edge case handling
+Step 2: Initialize current pointer to dummy node
+Step 3: While both list1 and list2 are not null:
+Step 4: Compare values of current nodes in both lists
+Step 5: Attach node with smaller value to current.next
+Step 6: Move pointer of the list whose node was selected
+Step 7: Move current pointer forward
+Step 8: Attach remaining nodes from non-empty list
+Step 9: Return dummy.next (actual head of merged list)
+
+Time Complexity: O(m + n) where m, n are lengths of lists
+Space Complexity: O(1) - only using pointers
+
+=== APPROACH 2: Recursive ===
+
+Intuition:
+Recursively choose smaller node and merge rest of the lists.
+
+Step 1: Base cases: if list1 is null, return list2; if list2 is null, return list1
+Step 2: Compare values of current nodes
+Step 3: If list1.val <= list2.val:
+Step 4: Set list1.next = merge(list1.next, list2)
+Step 5: Return list1
+Step 6: Else:
+Step 7: Set list2.next = merge(list1, list2.next)
+Step 8: Return list2
+
+Time Complexity: O(m + n) - visit each node once
+Space Complexity: O(m + n) - recursion stack
+
+=== APPROACH 3: Create New List ===
+
+Intuition:
+Create entirely new nodes instead of reusing existing ones.
+
+Step 1: Create dummy head for new list
+Step 2: Compare current nodes from both lists
+Step 3: Create new node with smaller value
+Step 4: Attach new node to result list
+Step 5: Advance pointer of list whose value was used
+Step 6: Continue until one list is exhausted
+Step 7: Create new nodes for remaining elements
+
+Time Complexity: O(m + n)
+Space Complexity: O(m + n) - creating new nodes
+
+=== APPROACH 4: In-place Without Dummy ===
+
+Intuition:
+Merge lists without using dummy node, handling edge cases explicitly.
+
+Step 1: Handle edge cases: if either list is null, return the other
+Step 2: Determine which list should be the head
+Step 3: Set head to list with smaller first value
+Step 4: Use two pointers to traverse and merge
+Step 5: Handle remaining nodes from longer list
+Step 6: Return head
+
+Time Complexity: O(m + n)
+Space Complexity: O(1)
+
+=== APPROACH 5: Using Priority Queue ===
+
+Intuition:
+Add all nodes to priority queue and extract in sorted order.
+
+Step 1: Create min-heap (priority queue) based on node values
+Step 2: Add all nodes from both lists to heap
+Step 3: Extract nodes from heap and link them together
+Step 4: Return head of new linked list
+
+Time Complexity: O((m + n) log(m + n)) - heap operations
+Space Complexity: O(m + n) - storing nodes in heap
+
+Note: This approach is overkill for two sorted lists but useful for k sorted lists.
+
+Interview Tip: Iterative approach with dummy node is most commonly expected. It's clean, efficient, and handles edge cases elegantly. Mention that dummy node eliminates need for special handling of the first node.

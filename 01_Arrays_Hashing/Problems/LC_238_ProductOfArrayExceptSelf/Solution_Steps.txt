@@ -1,0 +1,66 @@
+LC_238_ProductOfArrayExceptSelf - Solution Steps
+
+Problem: Given an integer array nums, return an array where answer[i] is the product of all elements except nums[i]. Must be O(n) time without division.
+
+=== APPROACH 1: Prefix and Suffix Arrays ===
+
+Intuition: 
+For each position i, the result is (product of all elements before i) × (product of all elements after i).
+
+Step 1: Create prefix array where prefix[i] = product of all elements before index i
+Step 2: Set prefix[0] = 1 (no elements before index 0)
+Step 3: For i from 1 to n-1: prefix[i] = prefix[i-1] × nums[i-1]
+Step 4: Create suffix array where suffix[i] = product of all elements after index i
+Step 5: Set suffix[n-1] = 1 (no elements after last index)
+Step 6: For i from n-2 to 0: suffix[i] = suffix[i+1] × nums[i+1]
+Step 7: For each position i: result[i] = prefix[i] × suffix[i]
+Step 8: Return result array
+
+Time Complexity: O(n) - three passes through array
+Space Complexity: O(n) - prefix and suffix arrays
+
+=== APPROACH 2: Space Optimized (Optimal) ===
+
+Intuition:
+Use the result array itself to store prefix products, then multiply with suffix products in a second pass.
+
+Step 1: Initialize result array of same length as input
+Step 2: First pass - store prefix products in result array
+Step 3: Set result[0] = 1
+Step 4: For i from 1 to n-1: result[i] = result[i-1] × nums[i-1]
+Step 5: Second pass - multiply with suffix products
+Step 6: Initialize suffix variable = 1
+Step 7: For i from n-1 to 0: result[i] = result[i] × suffix, then suffix *= nums[i]
+Step 8: Return result array
+
+Time Complexity: O(n) - two passes through array
+Space Complexity: O(1) - only using output array and one variable
+
+=== APPROACH 3: Division Approach (Not Allowed) ===
+
+Intuition:
+Calculate total product, then divide by current element for each position.
+
+Step 1: Calculate total product of all elements
+Step 2: For each position i: result[i] = totalProduct / nums[i]
+
+Issues:
+- Problem explicitly forbids division
+- Doesn't handle zeros properly
+- Risk of integer overflow
+
+=== APPROACH 4: Brute Force ===
+
+Intuition:
+For each position, calculate product of all other elements directly.
+
+Step 1: For each position i in result array
+Step 2: Initialize product = 1
+Step 3: For each position j != i: product *= nums[j]
+Step 4: Set result[i] = product
+Step 5: Return result
+
+Time Complexity: O(n²) - nested loops
+Space Complexity: O(1) - excluding output array
+
+Interview Tip: Start with prefix/suffix approach, then optimize to space-efficient version. Mention that this handles zeros naturally and avoids division issues.

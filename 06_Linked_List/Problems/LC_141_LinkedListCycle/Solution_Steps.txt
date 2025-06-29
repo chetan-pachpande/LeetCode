@@ -1,0 +1,85 @@
+LC_141_LinkedListCycle - Solution Steps
+
+Problem: Given head, the head of a linked list, determine if the linked list has a cycle in it.
+
+=== APPROACH 1: Floyd's Cycle Detection (Two Pointers) - Optimal ===
+
+Intuition: 
+Use two pointers moving at different speeds. If there's a cycle, faster pointer will eventually meet slower pointer.
+
+Step 1: Initialize slow pointer at head
+Step 2: Initialize fast pointer at head
+Step 3: While fast and fast.next are not null:
+Step 4: Move slow pointer one step: slow = slow.next
+Step 5: Move fast pointer two steps: fast = fast.next.next
+Step 6: If slow == fast, cycle detected - return true
+Step 7: If loop exits (fast reaches null), no cycle - return false
+
+Time Complexity: O(n) - in worst case, visit each node at most twice
+Space Complexity: O(1) - only using two pointers
+
+=== APPROACH 2: HashSet (Straightforward) ===
+
+Intuition:
+Store visited nodes in HashSet. If we encounter a node already in set, there's a cycle.
+
+Step 1: Create HashSet to store visited nodes
+Step 2: Initialize current pointer to head
+Step 3: While current is not null:
+Step 4: If current node is already in HashSet, return true (cycle found)
+Step 5: Add current node to HashSet
+Step 6: Move to next node: current = current.next
+Step 7: Return false if we reach end (no cycle)
+
+Time Complexity: O(n) - visit each node once
+Space Complexity: O(n) - storing up to n nodes in HashSet
+
+=== APPROACH 3: Modify Node Values (Destructive) ===
+
+Intuition:
+Mark visited nodes by modifying their values to a special marker.
+
+Step 1: Choose special marker value not in original range
+Step 2: Traverse the list
+Step 3: For each node, check if its value equals marker
+Step 4: If yes, cycle detected - return true
+Step 5: If no, set current node's value to marker
+Step 6: Move to next node
+Step 7: Return false if end reached
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Note: This modifies the original list and may not be allowed
+
+=== APPROACH 4: Count Steps with Limit ===
+
+Intuition:
+Traverse list with a step counter. If steps exceed reasonable limit, assume cycle exists.
+
+Step 1: Set maximum step limit (e.g., 10000)
+Step 2: Initialize step counter to 0
+Step 3: Traverse list while counting steps
+Step 4: If steps exceed limit, return true (likely cycle)
+Step 5: If reach end normally, return false
+
+Time Complexity: O(n) or O(limit)
+Space Complexity: O(1)
+
+Note: This is not a definitive solution - false positives possible
+
+=== APPROACH 5: Tortoise and Hare with Cycle Start Detection ===
+
+Intuition:
+Not only detect cycle but also find where cycle starts.
+
+Step 1: Use Floyd's algorithm to detect cycle
+Step 2: If cycle found, reset one pointer to head
+Step 3: Move both pointers one step at a time until they meet
+Step 4: Meeting point is start of cycle
+Step 5: Return true if cycle exists
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Interview Tip: Floyd's cycle detection (tortoise and hare) is the standard optimal solution. Explain the intuition: if there's a cycle, the fast pointer will "lap" the slow pointer. Also mention that HashSet approach is easier to understand but uses extra space.

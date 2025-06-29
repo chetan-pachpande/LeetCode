@@ -1,0 +1,82 @@
+LC_143_ReorderList - Solution Steps
+
+Problem: You are given the head of a singly linked-list. Reorder the list to be: L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → ...
+
+=== APPROACH 1: Three Steps - Find Middle, Reverse, Merge (Optimal) ===
+
+Intuition: 
+Split list at middle, reverse second half, then merge alternately.
+
+Step 1: Find middle of linked list using slow/fast pointers
+Step 2: Split list into two halves at middle
+Step 3: Reverse the second half of the list
+Step 4: Merge two halves alternately (first from first half, then from second half)
+Step 5: Handle remaining nodes if lists have different lengths
+
+Detailed Steps:
+Step 1a: slow = fast = head
+Step 1b: While fast.next and fast.next.next: slow = slow.next, fast = fast.next.next
+Step 2a: secondHalf = slow.next, slow.next = null
+Step 3a: Reverse secondHalf list using iterative approach
+Step 4a: Alternate between first and second half nodes
+Step 4b: Connect nodes: first -> second -> first.next -> second.next
+
+Time Complexity: O(n) - three linear passes
+Space Complexity: O(1) - only using pointers
+
+=== APPROACH 2: Convert to Array ===
+
+Intuition:
+Store all nodes in array for easy random access, then rebuild list.
+
+Step 1: Traverse linked list and store all nodes in array
+Step 2: Use two pointers (left and right) at array ends
+Step 3: Connect nodes alternately: left, right, left+1, right-1, ...
+Step 4: Continue until pointers meet
+Step 5: Set last node's next to null
+
+Time Complexity: O(n) - linear operations
+Space Complexity: O(n) - storing nodes in array
+
+=== APPROACH 3: Recursion ===
+
+Intuition:
+Use recursion to reach end of list, then reorder while returning.
+
+Step 1: Create recursive function that returns tail node
+Step 2: Base case: if head is null or single node, return head
+Step 3: Recursively get tail from rest of list
+Step 4: Reorder current level: head -> tail -> head.next
+Step 5: Update connections and return new tail
+
+Time Complexity: O(n)
+Space Complexity: O(n) - recursion stack
+
+=== APPROACH 4: Stack-Based ===
+
+Intuition:
+Use stack to access nodes from end while traversing from beginning.
+
+Step 1: Push all nodes onto stack
+Step 2: Traverse from head while popping from stack
+Step 3: Connect alternately: current -> popped -> current.next
+Step 4: Continue until middle is reached
+Step 5: Handle final connections
+
+Time Complexity: O(n)
+Space Complexity: O(n) - stack storage
+
+=== APPROACH 5: Two-Pass with Reversal ===
+
+Intuition:
+First pass to count nodes, second pass to reorder.
+
+Step 1: Count total nodes in first pass
+Step 2: In second pass, identify nodes to reverse
+Step 3: Reverse second half in-place
+Step 4: Merge two halves alternately
+
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Interview Tip: The three-step approach (find middle → reverse → merge) is the standard optimal solution. Break it down into these clear phases. Practice each phase separately: finding middle of linked list, reversing linked list, and merging two linked lists.

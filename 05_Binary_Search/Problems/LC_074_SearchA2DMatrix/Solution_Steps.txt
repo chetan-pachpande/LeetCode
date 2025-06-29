@@ -1,0 +1,81 @@
+LC_074_SearchA2DMatrix - Solution Steps
+
+Problem: Write an efficient algorithm that searches for a value target in an m x n integer matrix. The matrix has the following properties: integers in each row are sorted from left to right, and the first integer of each row is greater than the last integer of the previous row.
+
+=== APPROACH 1: Binary Search - Treat as 1D Array (Optimal) ===
+
+Intuition: 
+Since matrix is sorted row-wise and column-wise, treat it as a flattened sorted array and apply binary search.
+
+Step 1: Calculate total elements: m * n
+Step 2: Initialize left = 0, right = m * n - 1
+Step 3: While left <= right:
+Step 4: Calculate mid = left + (right - left) / 2
+Step 5: Convert 1D index to 2D: row = mid / n, col = mid % n
+Step 6: Get matrix value at matrix[row][col]
+Step 7: If value == target, return true
+Step 8: If value < target, search right half: left = mid + 1
+Step 9: If value > target, search left half: right = mid - 1
+Step 10: Return false if target not found
+
+Time Complexity: O(log(m*n)) - binary search on m*n elements
+Space Complexity: O(1) - only using pointer variables
+
+=== APPROACH 2: Two-Step Binary Search ===
+
+Intuition:
+First find the correct row using binary search, then find target in that row.
+
+Step 1: Binary search to find correct row:
+Step 2: Initialize rowLow = 0, rowHigh = m - 1
+Step 3: Find row where matrix[row][0] <= target <= matrix[row][n-1]
+Step 4: Binary search in the identified row:
+Step 5: Initialize colLow = 0, colHigh = n - 1
+Step 6: Search for target in matrix[targetRow][colLow...colHigh]
+Step 7: Return true if found, false otherwise
+
+Time Complexity: O(log m + log n) - two binary searches
+Space Complexity: O(1)
+
+=== APPROACH 3: Start from Top-Right Corner ===
+
+Intuition:
+Start from top-right corner. If current element > target, go left. If < target, go down.
+
+Step 1: Start at top-right corner: row = 0, col = n - 1
+Step 2: While row < m and col >= 0:
+Step 3: If matrix[row][col] == target, return true
+Step 4: If matrix[row][col] > target, move left: col--
+Step 5: If matrix[row][col] < target, move down: row++
+Step 6: Return false if bounds exceeded
+
+Time Complexity: O(m + n) - worst case traverse row + column
+Space Complexity: O(1)
+
+=== APPROACH 4: Brute Force ===
+
+Intuition:
+Search through every element in the matrix.
+
+Step 1: Iterate through each row
+Step 2: Iterate through each column in current row
+Step 3: If matrix[row][col] == target, return true
+Step 4: Return false if target not found after checking all elements
+
+Time Complexity: O(m * n) - check every element
+Space Complexity: O(1)
+
+=== APPROACH 5: Search Each Row ===
+
+Intuition:
+Use binary search on each row individually.
+
+Step 1: For each row from 0 to m-1:
+Step 2: Apply binary search on current row
+Step 3: If target found in current row, return true
+Step 4: Return false if target not found in any row
+
+Time Complexity: O(m * log n) - binary search on each row
+Space Complexity: O(1)
+
+Interview Tip: Approach 1 (treat as 1D array) is optimal and most elegant. The key insight is that a sorted 2D matrix can be viewed as a sorted 1D array. Mention the index conversion formulas: row = index / n, col = index % n.

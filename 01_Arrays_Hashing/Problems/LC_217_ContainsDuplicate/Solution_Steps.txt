@@ -1,0 +1,61 @@
+LC_217_ContainsDuplicate - Solution Steps
+
+Problem: Given an array of integers, return true if any value appears at least twice in the array.
+
+=== APPROACH 1: HashSet (Optimal) ===
+
+Intuition: 
+Use a HashSet to track elements we've seen. If we encounter an element that's already in the set, we found a duplicate.
+
+Step 1: Create an empty HashSet
+Step 2: Iterate through the array
+Step 3: For each element, check if it exists in the HashSet
+Step 4: If element exists in HashSet, return true (duplicate found)
+Step 5: If element doesn't exist, add it to the HashSet
+Step 6: If we finish the loop without finding duplicates, return false
+
+Time Complexity: O(n) - single pass through array
+Space Complexity: O(n) - HashSet storage in worst case
+
+=== APPROACH 2: Sorting ===
+
+Intuition:
+Sort the array first, then check adjacent elements for duplicates.
+
+Step 1: Sort the array (or create a sorted copy)
+Step 2: Iterate through the sorted array
+Step 3: For each element, check if it equals the next element
+Step 4: If adjacent elements are equal, return true
+Step 5: If no adjacent duplicates found, return false
+
+Time Complexity: O(n log n) - due to sorting
+Space Complexity: O(1) or O(n) depending on whether we modify original array
+
+=== APPROACH 3: Brute Force ===
+
+Intuition:
+Check every element against every other element to find duplicates.
+
+Step 1: Use nested loops to compare each element with all other elements
+Step 2: For each pair (i, j) where i < j, check if nums[i] == nums[j]
+Step 3: If any pair matches, return true
+Step 4: If no matches found after checking all pairs, return false
+
+Time Complexity: O(n²) - nested loops
+Space Complexity: O(1) - no extra space
+
+=== APPROACH 4: HashMap (Alternative) ===
+
+Intuition:
+Similar to HashSet but using HashMap to count occurrences.
+
+Step 1: Create an empty HashMap
+Step 2: For each element, check if it exists in HashMap
+Step 3: If exists, return true (duplicate found)
+Step 4: If not exists, add to HashMap with count 1
+Step 5: If loop completes, return false
+
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Interview Tip: HashSet approach is optimal for this problem. Mention that sorting approach is good when you can't use extra space.
