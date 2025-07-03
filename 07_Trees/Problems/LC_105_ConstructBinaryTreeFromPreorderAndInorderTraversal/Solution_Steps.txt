@@ -1,0 +1,94 @@
+LC_105_ConstructBinaryTreeFromPreorderAndInorderTraversal - Solution Steps
+
+Problem: Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
+
+=== APPROACH 1: HashMap + Recursion (Optimal) ===
+
+Intuition: 
+The first element in preorder is always the root. Find this root in inorder array - elements to the left form left subtree, elements to the right form right subtree. Use HashMap for O(1) root position lookup.
+
+Step 1: Create HashMap to store value → index mapping for inorder array
+Step 2: Initialize global preorder index to track current root being processed
+Step 3: Call recursive helper with full inorder range
+Step 4: In recursive helper, get current root from preorder[preorderIndex++]
+Step 5: Find root position in inorder using HashMap lookup
+Step 6: Elements before root index in inorder belong to left subtree
+Step 7: Elements after root index in inorder belong to right subtree
+Step 8: Recursively build left subtree first (preorder: root → left → right)
+Step 9: Recursively build right subtree
+Step 10: Return constructed root node
+
+Time Complexity: O(n) - visit each node once, O(1) lookup
+Space Complexity: O(n) - HashMap storage + recursion stack
+
+Key Insight: Preorder gives us root order, inorder gives us left/right subtree boundaries.
+
+=== APPROACH 2: Linear Search for Root Index ===
+
+Intuition:
+Same divide and conquer approach but use linear search to find root position in inorder array instead of HashMap.
+
+Step 1: Initialize preorder index to track current processing position
+Step 2: For each recursive call, get root from preorder[preorderIndex++]
+Step 3: Linear search through inorder array to find root position
+Step 4: Split inorder array at root position into left and right parts
+Step 5: Recursively build left subtree with left part of inorder
+Step 6: Recursively build right subtree with right part of inorder
+Step 7: Return constructed root
+
+Time Complexity: O(n²) - O(n) for each linear search across n nodes
+Space Complexity: O(n) - recursion stack
+
+=== APPROACH 3: Iterative with Stack ===
+
+Intuition:
+Use stack to simulate recursion. Process preorder elements and use inorder to determine when to go right vs continue left.
+
+Step 1: Create root from first preorder element and push to stack
+Step 2: Initialize inorder index to track current inorder position
+Step 3: For each remaining preorder element:
+Step 4: If stack top ≠ current inorder element, go left (add as left child)
+Step 5: If stack top = current inorder element, we've completed left subtree
+Step 6: Pop stack elements while they match inorder sequence
+Step 7: Last popped element is the parent for right child
+Step 8: Add current preorder element as right child
+Step 9: Continue until all preorder elements processed
+
+Time Complexity: O(n) - each element pushed/popped once
+Space Complexity: O(n) - stack storage
+
+=== APPROACH 4: Divide and Conquer without Global Variables ===
+
+Intuition:
+Clean recursive approach passing array boundaries instead of using global variables.
+
+Step 1: Create HashMap for inorder index lookup
+Step 2: Call recursive helper with start/end boundaries for both arrays
+Step 3: Base case: if start > end, return null
+Step 4: Root is first element in current preorder range
+Step 5: Find root index in inorder using HashMap
+Step 6: Calculate left subtree size from inorder split
+Step 7: Recursively build left subtree with calculated boundaries
+Step 8: Recursively build right subtree with remaining boundaries
+Step 9: Return root node
+
+Time Complexity: O(n) - with HashMap optimization
+Space Complexity: O(n) - HashMap + recursion stack
+
+=== APPROACH 5: Morris-style Construction (Advanced) ===
+
+Intuition:
+Construct tree while traversing, using parent pointers to avoid stack.
+
+Step 1: Process preorder elements sequentially
+Step 2: Use threading technique to maintain parent relationships
+Step 3: When encountering inorder match, backtrack to find correct parent
+Step 4: Insert current node as appropriate child
+Step 5: Continue until all nodes processed
+
+Time Complexity: O(n)
+Space Complexity: O(1) - excluding result tree
+
+Note: Complex implementation, rarely asked in interviews.
+
+Interview Tip: Start with HashMap approach - it's optimal and clean. Explain the key insight that preorder gives root order while inorder gives subtree boundaries. The divide and conquer pattern is crucial for tree construction problems.

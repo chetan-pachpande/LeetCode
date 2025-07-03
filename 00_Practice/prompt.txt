@@ -1,0 +1,129 @@
+LEETCODE PROBLEM SOLUTION GENERATOR PROMPT
+===========================================
+
+Use this prompt template to generate comprehensive solution files for new LeetCode problems:
+
+---
+
+**PROMPT TEMPLATE:**
+
+I'm working on LeetCode problem [PROBLEM_NUMBER]: [PROBLEM_NAME]. Please create a complete solution package with the following structure:
+
+**Problem Details:**
+- Problem Number: LC_[XXX]_[ProblemName]
+- Category: [Arrays_Hashing/Two_Pointers/Sliding_Window/Stack/Binary_Search/Linked_List/Trees/etc.]
+- Difficulty: [Easy/Medium/Hard]
+- Problem Statement: [Paste the complete problem statement here]
+
+**Required Files to Generate:**
+
+1. **Main Solution File** ([ProblemName].java):
+   - Multiple solution approaches (at least 2-3 different methods)
+   - Each approach in separate class with descriptive names (Solution1, Solution2, etc.)
+   - Comprehensive comments explaining time/space complexity
+   - Test cases in main method with expected outputs
+   - Clean, well-documented code
+
+2. **Solution Steps File** (Solution_Steps.txt):
+   - Problem description
+   - Multiple approaches (3-5 different methods)
+   - For each approach include:
+     * Intuition explanation
+     * Step-by-step breakdown (Step 1, Step 2, etc.)
+     * Time complexity analysis
+     * Space complexity analysis
+     * Key insights and patterns
+   - Interview tips and trade-offs between approaches
+   - Format exactly like existing Solution_Steps.txt files
+
+**Requirements:**
+- Use Java programming language
+- Follow clean code principles
+- Include multiple solution approaches (brute force → optimized)
+- Provide detailed complexity analysis
+- Add meaningful comments and documentation
+- Structure code for interview readiness
+- Include edge cases in testing
+
+**File Structure to Create:**
+```
+[Category]/Problems/LC_[XXX]_[ProblemName]/
+├── [ProblemName].java           (Main solution file)
+├── Solution_Steps.txt           (Explanation file)
+```
+
+**Example Usage:**
+Replace the bracketed placeholders with actual values:
+- [PROBLEM_NUMBER] → 001
+- [PROBLEM_NAME] → TwoSum  
+- [Category] → 01_Arrays_Hashing
+- [XXX] → 001
+- [ProblemName] → TwoSum
+
+**Sample Problem Statement Format:**
+```
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+Example 1:
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+Constraints:
+- 2 <= nums.length <= 10^4
+- -10^9 <= nums[i] <= 10^9
+- -10^9 <= target <= 10^9
+- Only one valid answer exists.
+```
+
+**Expected Solution Approaches to Include:**
+1. Brute Force approach (for comparison)
+2. Optimized approach (main solution)
+3. Alternative approaches (if applicable)
+4. Advanced/Follow-up approaches (if mentioned in problem)
+
+**Solution_Steps.txt Format Example:**
+```
+LC_XXX_ProblemName - Solution Steps
+
+Problem: [Brief problem description]
+
+=== APPROACH 1: [Approach Name] (Optimal) ===
+
+Intuition: 
+[Explain the key insight that makes this approach work]
+
+Step 1: [First step description]
+Step 2: [Second step description]
+...
+Step N: [Final step description]
+
+Time Complexity: O(?) - [explanation]
+Space Complexity: O(?) - [explanation]
+
+=== APPROACH 2: [Alternative Approach] ===
+
+[Similar format as above]
+
+Interview Tip: [Key insights for interview discussion]
+```
+
+---
+
+**USAGE INSTRUCTIONS:**
+1. Copy this template
+2. Replace all bracketed placeholders with actual problem details
+3. Paste the complete problem statement
+4. Submit to AI assistant
+5. Review and organize generated files in correct directory structure
+
+**NOTES:**
+- Always start with brute force approach, then optimize
+- Focus on clean, interview-ready code
+- Include comprehensive test cases
+- Explain trade-offs between different approaches
+- Consider follow-up questions and variations
