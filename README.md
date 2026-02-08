@@ -35,3 +35,12 @@ Each topic folder contains:
 
 - Create a problem: `./create_problem.sh <leetcode_number> "<problem_name>" <category_number>`
 - Refresh indexes: `./scripts/update_problem_indexes.sh`
+
+## Run PrefixSum Test
+
+From the repository root, run:
+
+```bash
+cd 01_Arrays_Hashing/AdvancedAlgorithms
+javac PrefixSum.java PrefixSumTest.java && java PrefixSumTest
+```
