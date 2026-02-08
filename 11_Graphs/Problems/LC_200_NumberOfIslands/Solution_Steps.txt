@@ -1,0 +1,4 @@
+1) Scan every cell in the grid.
+2) When land ('1') is found, increment island count.
+3) Run DFS to mark all connected land as visited ('0').
+4) Continue until all cells are processed.
