@@ -1,0 +1,214 @@
+NEETCODE 150 PROBLEMS STRUCTURE
+=================================
+
+This file outlines the complete NeetCode 150 curated list of LeetCode problems organized by category.
+
+=== 1. ARRAYS & HASHING ===
+- Contains Duplicate | LC 217
+- Valid Anagram | LC 242
+- Two Sum | LC 1
+- Group Anagrams | LC 49
+- Top K Frequent Elements | LC 347
+- Product of Array Except Self | LC 238
+- Valid Sudoku | LC 36
+- Encode and Decode Strings | LC 271 (Premium)
+- Longest Consecutive Sequence | LC 128
+
+=== 2. TWO POINTERS ===
+- Valid Palindrome | LC 125
+- Two Sum II - Input Array Is Sorted | LC 167
+- 3Sum | LC 15
+- Container With Most Water | LC 11
+- Trapping Rain Water | LC 42
+
+=== 3. SLIDING WINDOW ===
+- Best Time to Buy and Sell Stock | LC 121
+- Longest Substring Without Repeating Characters | LC 3
+- Longest Repeating Character Replacement | LC 424
+- Permutation in String | LC 567
+- Minimum Window Substring | LC 76
+- Sliding Window Maximum | LC 239
+
+=== 4. STACK ===
+- Valid Parentheses | LC 20
+- Min Stack | LC 155
+- Evaluate Reverse Polish Notation | LC 150
+- Generate Parentheses | LC 22
+- Daily Temperatures | LC 739
+- Car Fleet | LC 853
+- Largest Rectangle in Histogram | LC 84
+
+=== 5. BINARY SEARCH ===
+- Binary Search | LC 704
+- Search a 2D Matrix | LC 74
+- Koko Eating Bananas | LC 875
+- Find Minimum in Rotated Sorted Array | LC 153
+- Search in Rotated Sorted Array | LC 33
+- Time Based Key-Value Store | LC 981
+- Median of Two Sorted Arrays | LC 4
+
+=== 6. LINKED LIST ===
+- Reverse Linked List | LC 206
+- Merge Two Sorted Lists | LC 21
+- Reorder List | LC 143
+- Remove Nth Node From End of List | LC 19
+- Copy List with Random Pointer | LC 138
+- Add Two Numbers | LC 2
+- Linked List Cycle | LC 141
+- Find the Duplicate Number | LC 287
+- LRU Cache | LC 146
+- Merge k Sorted Lists | LC 23
+- Reverse Nodes in k-Group | LC 25
+
+=== 7. TREES ===
+- Invert Binary Tree | LC 226
+- Maximum Depth of Binary Tree | LC 104
+- Diameter of Binary Tree | LC 543
+- Balanced Binary Tree | LC 110
+- Same Tree | LC 100
+- Subtree of Another Tree | LC 572
+- Lowest Common Ancestor of a Binary Search Tree | LC 235
+- Binary Tree Level Order Traversal | LC 102
+- Binary Tree Right Side View | LC 199
+- Count Good Nodes in Binary Tree | LC 1448
+- Validate Binary Search Tree | LC 98
+- Kth Smallest Element in a BST | LC 230
+- Construct Binary Tree from Preorder and Inorder Traversal | LC 105
+- Binary Tree Maximum Path Sum | LC 124
+- Serialize and Deserialize Binary Tree | LC 297
+
+=== 8. TRIES ===
+- Implement Trie (Prefix Tree) | LC 208
+- Design Add and Search Words Data Structure | LC 211
+- Word Search II | LC 212
+
+=== 9. HEAP / PRIORITY QUEUE ===
+- Kth Largest Element in a Stream | LC 703
+- Last Stone Weight | LC 1046
+- K Closest Points to Origin | LC 973
+- Kth Largest Element in an Array | LC 215
+- Task Scheduler | LC 621
+- Design Twitter | LC 355
+- Find Median from Data Stream | LC 295
+
+=== 10. BACKTRACKING ===
+- Subsets | LC 78
+- Combination Sum | LC 39
+- Permutations | LC 46
+- Subsets II | LC 90
+- Combination Sum II | LC 40
+- Word Search | LC 79
+- Palindrome Partitioning | LC 131
+- Letter Combinations of a Phone Number | LC 17
+- N-Queens | LC 51
+
+=== 11. GRAPHS ===
+- Number of Islands | LC 200
+- Clone Graph | LC 133
+- Max Area of Island | LC 695
+- Pacific Atlantic Water Flow | LC 417
+- Surrounded Regions | LC 130
+- Rotting Oranges | LC 994
+- Walls and Gates | LC 286 (Premium)
+- Course Schedule | LC 207
+- Course Schedule II | LC 210
+- Redundant Connection | LC 684
+- Number of Connected Components in an Undirected Graph | LC 323 (Premium)
+- Graph Valid Tree | LC 261 (Premium)
+- Word Ladder | LC 127
+
+=== 12. ADVANCED GRAPHS ===
+- Reconstruct Itinerary | LC 332
+- Min Cost to Connect All Points | LC 1584
+- Network Delay Time | LC 743
+- Swim in Rising Water | LC 778
+- Alien Dictionary | LC 269 (Premium)
+- Cheapest Flights Within K Stops | LC 787
+
+=== 13. 1-D DYNAMIC PROGRAMMING ===
+- Climbing Stairs | LC 70
+- Min Cost Climbing Stairs | LC 746
+- House Robber | LC 198
+- House Robber II | LC 213
+- Longest Palindromic Substring | LC 5
+- Palindromic Substrings | LC 647
+- Decode Ways | LC 91
+- Coin Change | LC 322
+- Maximum Product Subarray | LC 152
+- Word Break | LC 139
+- Longest Increasing Subsequence | LC 300
+- Partition Equal Subset Sum | LC 416
+
+=== 14. 2-D DYNAMIC PROGRAMMING ===
+- Unique Paths | LC 62
+- Longest Common Subsequence | LC 1143
+- Best Time to Buy and Sell Stock with Cooldown | LC 309
+- Coin Change 2 | LC 518
+- Target Sum | LC 494
+- Interleaving String | LC 97
+- Longest Increasing Path in a Matrix | LC 329
+- Distinct Subsequences | LC 115
+- Edit Distance | LC 72
+- Burst Balloons | LC 312
+- Regular Expression Matching | LC 10
+
+=== 15. GREEDY ===
+- Maximum Subarray | LC 53
+- Jump Game | LC 55
+- Jump Game II | LC 45
+- Gas Station | LC 134
+- Hand of Straights | LC 846
+- Merge Triplets to Form Target Triplet | LC 1899
+- Partition Labels | LC 763
+- Valid Parenthesis String | LC 678
+
+=== 16. INTERVALS ===
+- Insert Interval | LC 57
+- Merge Intervals | LC 56
+- Non-overlapping Intervals | LC 435
+- Meeting Rooms | LC 252 (Premium)
+- Meeting Rooms II | LC 253 (Premium)
+- Minimum Interval to Include Each Query | LC 1851
+
+=== 17. MATH & GEOMETRY ===
+- Rotate Image | LC 48
+- Spiral Matrix | LC 54
+- Set Matrix Zeroes | LC 73
+- Happy Number | LC 202
+- Plus One | LC 66
+- Pow(x, n) | LC 50
+- Multiply Strings | LC 43
+- Detect Squares | LC 2013
+
+=== 18. BIT MANIPULATION ===
+- Single Number | LC 136
+- Number of 1 Bits | LC 191
+- Counting Bits | LC 338
+- Reverse Bits | LC 190
+- Missing Number | LC 268
+- Sum of Two Integers | LC 371
+- Reverse Integer | LC 7
+
+=== SUMMARY ===
+Total Problems: 150
+Categories: 18
+Difficulty Distribution:
+- Easy: ~40 problems
+- Medium: ~85 problems  
+- Hard: ~25 problems
+
+Premium Problems (LeetCode Premium required):
+- Encode and Decode Strings (LC 271)
+- Walls and Gates (LC 286)
+- Number of Connected Components in an Undirected Graph (LC 323)
+- Graph Valid Tree (LC 261)
+- Alien Dictionary (LC 269)
+- Meeting Rooms (LC 252)
+- Meeting Rooms II (LC 253)
+
+=== NOTES ===
+- This list represents the curated NeetCode 150 problems
+- Problems are ordered roughly by difficulty within each category
+- Some categories have more problems than others based on importance
+- Focus on understanding patterns rather than memorizing solutions
+- Practice problems in order for optimal learning progression
