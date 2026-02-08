@@ -1,0 +1,5 @@
+1) Use DFS backtracking to build combinations.
+2) Keep a running remaining target.
+3) Reuse same candidate by recursing with same index.
+4) Add path to result when remaining target reaches 0.
+5) Stop branch when remaining target becomes negative.
