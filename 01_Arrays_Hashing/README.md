@@ -1,18 +1,18 @@
 # Arrays Hashing
 
-This directory contains solutions to Arrays Hashing problems from the NeetCode 150 collection.
+Auto-generated overview for this topic.
 
-## Problems in this category
+## Structure
 
-- [GroupAnagrams](GroupAnagrams/)
-- [Validanagram](Validanagram/)
-- [TwoSum](TwoSum/)
-- [ContainsDuplicate](ContainsDuplicate/)
+- [Beginner Algorithms](./BeginnerAlgorithms/)
+- [Advanced Algorithms](./AdvancedAlgorithms/)
+- [Problems](./Problems/)
 
-## Adding a new problem to this category
+## Current Progress
 
-Use the helper script from the root directory:
+- Solved problem folders: 7
 
-```bash
-./create_problem.sh ProblemName 01
-```
+## Commands
+
+- Create a problem here: `./create_problem.sh <leetcode_number> "<problem_name>" 1`
+- Refresh indexes: `./scripts/update_problem_indexes.sh`

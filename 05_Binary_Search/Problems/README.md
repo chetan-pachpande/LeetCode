@@ -1,8 +1,7 @@
 # Problems - Binary Search
 
-This folder contains problem solutions related to Binary Search.
+Auto-generated index of problems in this topic.
 
 ## Problem List
 
-1. Add your problems and solutions here
-
+1. [LC_074_SearchA2DMatrix](./LC_074_SearchA2DMatrix)
