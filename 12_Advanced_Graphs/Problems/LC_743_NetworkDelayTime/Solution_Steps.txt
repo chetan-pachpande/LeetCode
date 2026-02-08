@@ -1,0 +1,4 @@
+1) Build adjacency list from directed weighted edges.
+2) Use Dijkstra's algorithm from source node k.
+3) Track shortest arrival time using a min-heap.
+4) Return max shortest time if all nodes are reached, else -1.
