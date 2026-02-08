@@ -1,14 +1,18 @@
 # Math Geometry
 
-This directory contains solutions to Math Geometry problems from the NeetCode 150 collection.
+Auto-generated overview for this topic.
 
-## Problems in this category
+## Structure
 
+- [Beginner Algorithms](./BeginnerAlgorithms/)
+- [Advanced Algorithms](./AdvancedAlgorithms/)
+- [Problems](./Problems/)
 
-## Adding a new problem to this category
+## Current Progress
 
-Use the helper script from the root directory:
+- Solved problem folders: 0
 
-```bash
-./create_problem.sh ProblemName 17
-```
+## Commands
+
+- Create a problem here: `./create_problem.sh <leetcode_number> "<problem_name>" 17`
+- Refresh indexes: `./scripts/update_problem_indexes.sh`

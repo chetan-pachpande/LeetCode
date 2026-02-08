@@ -1,8 +1,7 @@
 # Problems - 2D Dynamic Programming
 
-This folder contains problem solutions related to 2D Dynamic Programming.
+Auto-generated index of problems in this topic.
 
 ## Problem List
 
-1. Add your problems and solutions here
-
+1. No problems added yet

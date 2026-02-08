@@ -1,8 +1,7 @@
 # Problems - Graphs
 
-This folder contains problem solutions related to Graphs.
+Auto-generated index of problems in this topic.
 
 ## Problem List
 
-1. Add your problems and solutions here
-
+1. No problems added yet
