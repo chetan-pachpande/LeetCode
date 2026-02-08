@@ -1,13 +1,10 @@
-import java.util.List;
-import java.util.ArrayList;
-
 /**
  * PrefixSum - An implementation of the prefix sum algorithm
  * Used to efficiently calculate the sum of elements in a range of an array
  */
 public class PrefixSum {
-    
-    List<Integer> prefix;
+    private final int[] prefix;
+    private final int length;
 
     /**
      * Constructs the prefix sum array from the given input array
@@ -16,11 +13,14 @@ public class PrefixSum {
      * @param nums The input array
      */
     public PrefixSum(int[] nums) {
-        prefix = new ArrayList<>();
-        int total = 0;
-        for (int n : nums) {
-            total += n;
-            prefix.add(total);
+        if (nums == null) {
+            throw new IllegalArgumentException("Input array must not be null");
+        }
+
+        length = nums.length;
+        prefix = new int[length + 1];
+        for (int i = 0; i < length; i++) {
+            prefix[i + 1] = prefix[i] + nums[i];
         }
     }
 
@@ -33,8 +33,12 @@ public class PrefixSum {
      * @return Sum of elements in the specified range
      */
     public int rangeSum(int left, int right) {
-        int preRight = prefix.get(right);
-        int preLeft = left > 0 ? prefix.get(left - 1) : 0;
-        return (preRight - preLeft);      
+        if (left < 0 || right < 0 || left > right || right >= length) {
+            throw new IllegalArgumentException(
+                "Invalid range: left=" + left + ", right=" + right + ", length=" + length
+            );
+        }
+
+        return prefix[right + 1] - prefix[left];
     }
 }
