@@ -175,10 +175,11 @@ class Solution2 {
         return root;
     }
 }
-
-
+/*
+Example tree diagram:
     1
    / \
   2   3
      / \
     4   5
+*/
