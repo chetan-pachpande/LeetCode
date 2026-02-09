@@ -10,7 +10,7 @@ Auto-generated overview for this topic.
 
 ## Current Progress
 
-- Solved problem folders: 0
+- Solved problem folders: 1
 
 ## Commands
 

@@ -17,9 +17,9 @@ Each topic folder contains:
 - [Trees](./07_Trees/Problems/) (2)
 - [Tries](./08_Tries/Problems/) (0)
 - [Heap Priority Queue](./09_Heap_Priority_Queue/Problems/) (0)
-- [Backtracking](./10_Backtracking/Problems/) (0)
-- [Graphs](./11_Graphs/Problems/) (0)
-- [Advanced Graphs](./12_Advanced_Graphs/Problems/) (0)
+- [Backtracking](./10_Backtracking/Problems/) (1)
+- [Graphs](./11_Graphs/Problems/) (1)
+- [Advanced Graphs](./12_Advanced_Graphs/Problems/) (1)
 - [1D Dynamic Programming](./13_1D_Dynamic_Programming/Problems/) (0)
 - [2D Dynamic Programming](./14_2D_Dynamic_Programming/Problems/) (0)
 - [Greedy](./15_Greedy/Problems/) (0)
@@ -29,18 +29,9 @@ Each topic folder contains:
 
 ## Totals
 
-- Solved problem folders: 19
+- Solved problem folders: 22
 
 ## Commands
 
 - Create a problem: `./create_problem.sh <leetcode_number> "<problem_name>" <category_number>`
 - Refresh indexes: `./scripts/update_problem_indexes.sh`
-
-## Run PrefixSum Test
-
-From the repository root, run:
-
-```bash
-cd 01_Arrays_Hashing/AdvancedAlgorithms
-javac PrefixSum.java PrefixSumTest.java && java PrefixSumTest
-```
