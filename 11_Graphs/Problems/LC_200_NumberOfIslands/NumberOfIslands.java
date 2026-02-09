@@ -1,3 +1,6 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class NumberOfIslands {
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) {
@@ -12,7 +15,7 @@ public class NumberOfIslands {
             for (int c = 0; c < cols; c++) {
                 if (grid[r][c] == '1') {
                     islands++;
-                    dfs(grid, r, c);
+                    floodFillIterative(grid, r, c);
                 }
             }
         }
@@ -20,19 +23,27 @@ public class NumberOfIslands {
         return islands;
     }
 
-    private void dfs(char[][] grid, int r, int c) {
+    private void floodFillIterative(char[][] grid, int r, int c) {
         int rows = grid.length;
         int cols = grid[0].length;
+        Deque<int[]> stack = new ArrayDeque<>();
+        stack.push(new int[]{r, c});
 
-        if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] != '1') {
-            return;
+        while (!stack.isEmpty()) {
+            int[] cell = stack.pop();
+            int row = cell[0];
+            int col = cell[1];
+
+            if (row < 0 || col < 0 || row >= rows || col >= cols || grid[row][col] != '1') {
+                continue;
+            }
+
+            grid[row][col] = '0';
+            stack.push(new int[]{row + 1, col});
+            stack.push(new int[]{row - 1, col});
+            stack.push(new int[]{row, col + 1});
+            stack.push(new int[]{row, col - 1});
         }
-
-        grid[r][c] = '0';
-        dfs(grid, r + 1, c);
-        dfs(grid, r - 1, c);
-        dfs(grid, r, c + 1);
-        dfs(grid, r, c - 1);
     }
 
     public static void main(String[] args) {
