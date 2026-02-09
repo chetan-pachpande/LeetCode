@@ -4,4 +4,4 @@ Auto-generated index of problems in this topic.
 
 ## Problem List
 
-1. No problems added yet
+1. [LC_039_CombinationSum](./LC_039_CombinationSum)
